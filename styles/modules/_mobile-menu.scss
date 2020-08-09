@@ -1,0 +1,193 @@
+.mobile-menu {
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 100px;
+    width: 100%;
+    background-color: $cWhite;
+
+    &__icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__bar {
+        display: block;
+        height: 2px;
+        width: 35px;
+        background-color: $cBlack;
+        margin-bottom: 9px;
+    }
+
+    &__btn {
+        position: relative;
+        background-color: transparent;
+        border: none;
+        outline: none !important;
+        cursor: pointer;
+        margin-bottom: 5px;
+        
+        & > span {
+            display: block;
+            background-color: $cBlack;
+            width: 35px;
+            height: 2px;
+            margin-bottom: 9px;
+            transform-origin: center center;
+            transition: transform 0.3s;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &__text {
+        opacity: 1;
+        letter-spacing: 3px;
+        transition: all 0.1s ease 0.2s;
+        @extend .font-sm;
+    }
+
+    &__title {
+        position: relative;
+        text-align: center;
+        letter-spacing: 10px;
+        font-size: 40px;
+        width: 50%;
+        margin: 0 auto;
+
+        & > span {
+            position: relative;
+
+            &:first-child {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transform: translate(-50%, -40%);
+                    border-radius: 50%;
+                    background-color: $cYellow;
+                    width: 50px;
+                    height: 50px;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+
+    &__ul {
+        list-style: none;
+        padding: 0;
+        width: 70%;
+        margin: 10px auto;
+    }
+
+    &__li {
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    &__link {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        color: $cText;
+        text-decoration: none !important;
+        align-items: center;
+        
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(200, 200, 200, 0.5);
+            z-index: 1;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: $cYellow;
+            z-index: 20;
+            top: 50%;
+            transform: translateY(-50%) scaleX(0);
+            left: 0;
+            transform-origin: center center;
+            transition: transform 0.2s ease-in;
+        }
+
+        &:hover {
+            color: $cText;
+
+            &::after {
+                transform: translateY(-50%) scaleX(1);
+            }
+        }
+    }
+
+    &__eng {
+        position: relative;
+        z-index: 10;
+        background-color: $cWhite;
+        padding: 0 10px;
+        font-size: 18px;
+    }
+
+    &__jpn {
+        position: relative;
+        z-index: 10;
+        background-color: $cWhite;
+        padding: 0 10px;
+        font-size: 10px;
+    }
+
+    &__footer {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        color: $cText;
+        text-decoration: none !important;
+        font-size: 10px;
+        font-weight: 400 !important;
+
+        &:hover {
+            color: $cText;
+        }
+    }
+}
+
+.menu-open {
+
+    & .mobile-menu {
+        visibility: visible;
+        opacity: 1;
+        z-index: 10;
+
+        &__btn {
+            & > span {
+                &:nth-child(1) {
+                    transform: translateY(11px) rotateZ(135deg);
+                }
+                &:nth-child(2) {
+                    transform: scaleX(0);
+                }
+                &:nth-child(3) {
+                    transform: translateY(-11px) rotateZ(-135deg);
+                }
+            }
+        }
+
+        &__text {
+            opacity: 0;
+        }
+    }
+}
