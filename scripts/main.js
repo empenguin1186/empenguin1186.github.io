@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
     // const main = new Main();
     const menu = new MobileMenu();
+
+    function inviewAnimation(el, inview) {
+        if (inview) {
+            el.classList.add('inview');
+        } else {
+            el.classList.remove('inview');
+        }
+    }
+
+    const so = new ScrollObserver('.hero', inviewAnimation);
 });
 
 class Main {
