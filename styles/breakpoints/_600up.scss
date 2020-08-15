@@ -9,3 +9,37 @@ Stylesheet: 600px以上のタブレットやモニタで適用
         display: block;
     }
 }
+
+.principle {
+    &__wrapper {
+        max-height: 1000px;
+    }
+
+    &__accordion {
+        display: none;
+    }
+}
+
+.flex {
+    flex-flow: row wrap;
+}
+
+.service {
+
+    &__title {
+        text-align: left;
+    }
+
+    &__li {
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &__img {
+        flex-basis: 30%;
+    }
+
+    &__texts {
+        flex-basis: 60%;
+    }
+}

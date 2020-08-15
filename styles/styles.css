@@ -709,11 +709,11 @@ img {
   font-size: 25px;
 }
 
-.mb-sm {
+.mb-sm, .service__img {
   margin-bottom: 16px !important;
 }
 
-.mb-lg {
+.mb-lg, .hero, .principle {
   margin-bottom: 80px !important;
 }
 
@@ -725,7 +725,7 @@ img {
   padding-bottom: 80px !important;
 }
 
-.content-width, .header__inner, .hero {
+.content-width, .header__inner, .hero, .principle, .service {
   width: 80%;
   margin: 0 auto;
   max-width: 1070px;
@@ -738,6 +738,26 @@ img {
 #container {
   background-color: white;
   position: relative;
+}
+
+.title {
+  text-align: center;
+}
+
+.title__main {
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 2.0em;
+}
+
+.flex, .service__li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .bg-gray {
@@ -927,6 +947,158 @@ img {
   height: 150px;
 }
 
+.principle__wrapper {
+  position: relative;
+  max-height: 200px;
+  padding-bottom: 40px;
+  overflow: hidden;
+  -webkit-transition: max-height 0.6s ease;
+  transition: max-height 0.6s ease;
+}
+
+.principle__accordion::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(252, 252, 252, 0)), color-stop(30%, rgba(252, 252, 252, 0.5)), to(white));
+  background: linear-gradient(180deg, rgba(252, 252, 252, 0), rgba(252, 252, 252, 0.5) 30%, white);
+}
+
+.principle__btn {
+  background-image: url(../../images/down-arrow.svg);
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.expand .principle__wrapper {
+  max-height: 1000px;
+}
+
+.expand .principle__accordion::before {
+  content: "";
+  display: none;
+}
+
+.expand .principle__btn {
+  -webkit-transform: translateX(-50%) rotate(-180deg);
+          transform: translateX(-50%) rotate(-180deg);
+}
+
+.service__ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+.service__li {
+  margin-bottom: 32px;
+}
+
+.service__li:nth-child(1) .service__img::before {
+  background-color: #ffee6b;
+  background-image: url(../../images/wordpress.svg);
+}
+
+.service__li:nth-child(2) .service__img::before {
+  background-color: #dfdedb;
+  background-image: url(../../images/shoppingcart.svg);
+}
+
+.service__li:nth-child(3) .service__img::before {
+  background-color: #96d0d1;
+  background-image: url(../../images/mapmarker.svg);
+}
+
+.service__img::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  background-size: 50%;
+  background-position: center;
+}
+
+.service__icon {
+  width: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.service__icon:nth-child(2) {
+  background-color: black;
+}
+
+.service__title {
+  text-align: center;
+}
+
+.service__title-main {
+  font-size: 1.5em;
+}
+
+.service__link {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  color: rgba(0, 0, 0, 0.8) !important;
+  text-decoration: none !important;
+  -webkit-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+}
+
+.service__link:hover {
+  color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.service__link:hover .service__link-arrow {
+  -webkit-transform: translate(10px, -2px);
+          transform: translate(10px, -2px);
+  opacity: 0.4;
+}
+
+.service__link-text {
+  margin: 0 10px;
+}
+
+.service__link-arrow {
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  position: relative;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+}
+
 .inview .hero__triangle {
   opacity: 1;
   -webkit-transform: rotate(-15deg);
@@ -956,6 +1128,37 @@ Stylesheet: 600px以上のタブレットやモニタで適用
   .hero__domain {
     display: block;
   }
+  .principle__wrapper {
+    max-height: 1000px;
+  }
+  .principle__accordion {
+    display: none;
+  }
+  .flex, .service__li {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+  }
+  .service__title {
+    text-align: left;
+  }
+  .service__li {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  .service__img {
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+  }
+  .service__texts {
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+  }
 }
 
 @media (min-width: 960px) {
@@ -967,6 +1170,35 @@ Stylesheet: 960px以上のモニタで適用
   .mobile-menu__li {
     width: 50%;
   }
+  .flex, .service__li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .service__ul {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .service__li {
+    -ms-flex-preferred-size: 30%;
+        flex-basis: 30%;
+  }
+  .service__img, .service__texts {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+  .service__img {
+    width: 100%;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -977,6 +1209,10 @@ Stylesheet: 1280px以上のモニタで適用
 ******************************************************************/
   .hero__title > span {
     display: inline;
+  }
+  .service__li {
+    -ms-flex-preferred-size: 28%;
+        flex-basis: 28%;
   }
 }
 

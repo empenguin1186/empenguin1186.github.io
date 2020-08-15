@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const so = new ScrollObserver('.hero', inviewAnimation);
+
+    // アコーディオン
+    const accordion = document.querySelector('.principle__btn');
+    const clickOrTap = window.ontouchstart ? 'touchstart' : 'click';
+    accordion.addEventListener(clickOrTap, () => {
+        document.querySelector('.principle').classList.toggle('expand');
+    })
 });
 
 class Main {

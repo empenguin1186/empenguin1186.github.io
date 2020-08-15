@@ -11,3 +11,10 @@ Stylesheet: 1280px以上のモニタで適用
         }
     }
 }
+
+.service {
+
+    &__li {
+        flex-basis: 28%;
+    }
+}
