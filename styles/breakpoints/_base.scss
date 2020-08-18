@@ -142,6 +142,40 @@ img {
     }
 }
 
+.contents-link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    color: rgba(0, 0, 0, 0.8) !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease-in;
+
+    &:hover {
+        color: rgba(0, 0, 0, 0.4) !important;
+
+        & .contents-link__arrow {
+            transform: translate(10px, -2px);
+            opacity: 0.4;
+        }
+    }
+
+    &__text {
+        margin: 0 10px;
+    }
+    
+    &__arrow {
+        transition: all 0.3s ease-in;
+        position: relative;
+        transform: translateY(-2px);
+        width: 32px;
+        height: 32px;
+        opacity: 1;
+    }
+}
+
 .hero {
     position: relative;
     margin-top: 100px;
@@ -300,6 +334,7 @@ img {
 
 .service {
     @extend .content-width;
+    @extend .mb-lg;
 
     &__ul {
         display: flex;
@@ -373,39 +408,56 @@ img {
     &__title-main {
         font-size: 1.5em;
     }
+}
 
-    &__link {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        margin: 0 auto;
-        color: rgba(0, 0, 0, 0.8) !important;
-        text-decoration: none !important;
-        transition: color 0.3s ease-in;
+.works {
+    position: relative;
+    padding: 30px 0;
+    @extend .mb-lg;
 
-        &:hover {
-            color: rgba(0, 0, 0, 0.4) !important;
-
-            & .service__link-arrow {
-                transform: translate(10px, -2px);
-                opacity: 0.4;
-            }
-        }
+    &::before {
+        position: absolute;
+        content:  "";
+        top: 0;
+        left: 0;
+        background-color: $cYellow;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        transform: skewY(-7deg);
     }
 
-    &__link-text {
-        margin: 0 10px;
+    &__inner {
+        @extend .content-width;
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
     }
 
-    &__link-arrow {
-        transition: all 0.3s ease-in;
-        position: relative;
-        transform: translateY(-2px);
-        width: 32px;
-        height: 32px;
-        opacity: 1;
+    & .swiper-container {
+        @extend .mb-sm;
+    }
+}
+
+.blog {
+    @extend .content-width;
+    @extend .mb-lg;
+    overflow: hidden;
+
+    &__item {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    &__title {
+        color: $cWhite;
+        font-weight: 600;
+    }
+
+    &__date {
+        color: $cWhite;
     }
 }
 

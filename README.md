@@ -14,7 +14,13 @@
 - 上向きの正三角形を作るには、border-left,right,bottom の border の太さの比を 1:1:√3 とし、border-bottom に色をつけその他は透明にする。
 
 ### だんだん色が薄くなる設定
-background-image: linear-gradient(180deg, rgba(252, 252, 252, 0), rgba(252, 252, 252, 0.5) 30%, #fcfcfc);
+- background-image: linear-gradient(180deg, rgba(252, 252, 252, 0), rgba(252, 252, 252, 0.5) 30%, #fcfcfc);
+
+### 背景要素の設定
+- 背景の大きさと初期位置を設定する場合は、background-size, background-position プロパティを使用する。
+
+### div や img 要素のアスペクト比を固定したい場合
+- div や img 要素のアスペクト比を1:1 に固定したい場合は、before 要素の padding-top の値を 100%にする。
 
 ## TODO
 - ヘッダが一番前に来ていないので直す

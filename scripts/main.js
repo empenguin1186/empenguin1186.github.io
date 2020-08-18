@@ -17,7 +17,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const clickOrTap = window.ontouchstart ? 'touchstart' : 'click';
     accordion.addEventListener(clickOrTap, () => {
         document.querySelector('.principle').classList.toggle('expand');
-    })
+    });
+
+    const works = new HeroSlider('.works__slide');
+    works.start();
+
+    const blog = new HeroSlider('.blog__slide');
+    blog.start();
 });
 
 class Main {
