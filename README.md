@@ -22,6 +22,10 @@
 ### div や img 要素のアスペクト比を固定したい場合
 - div や img 要素のアスペクト比を1:1 に固定したい場合は、before 要素の padding-top の値を 100%にする。
 
+### いろんな中央揃えについて
+- pタグのテキスト上下中央揃えは display: flex; aligin-items: center; で行うのがベスト。
+- span はinline要素なので、左右中央揃えにする場合は inline-block 要素に変換して width を設定し、text-align: center を指定する。
+
 ## TODO
 - ヘッダが一番前に来ていないので直す
 - menu-open時バックグラウンドがおかしいので直す

@@ -15,7 +15,6 @@ class HeroSlider {
             loop: true,
 
             // フォーカスされているスライドを中央に配置するかどうか
-            centeredSlides: false,
 
             // 画面に表示する画像の数
             slidesPerView: 1,
@@ -27,6 +26,7 @@ class HeroSlider {
             // 画面の幅が変更された場合に伴う設定変更
             breakpoints: {
                 480: {
+                    centeredSlides: false,
                     slidesPerView: 2,
                 },
                 960: {
@@ -51,6 +51,7 @@ class HeroSlider {
             // クリックしても自動アニメーションが行われる
             disableOnInteraction: false
         }, options)
+
         this.swiper.params.autoplay = options
 
         // autoplayを開始する
