@@ -16,6 +16,10 @@ Stylesheet: 960px以上のモニタで適用
     flex-direction: column;
 }
 
+.hero {
+    width: 60%;
+}
+
 .service {
     &__ul {
         flex-flow: row wrap;
