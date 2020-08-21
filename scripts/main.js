@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const so = new ScrollObserver('.hero', inviewAnimation);
+    const soPrinciple = new ScrollObserver('.principle', inviewAnimation);
+    const soService = new ScrollObserver('.service', inviewAnimation);
+    const soWorks = new ScrollObserver('.works', inviewAnimation);
+    const soBlog = new ScrollObserver('.blog', inviewAnimation);
+    const soAbout = new ScrollObserver('.about', inviewAnimation);
+    const soContact = new ScrollObserver('.contact', inviewAnimation);
+    const soFooter = new ScrollObserver('.footer', inviewAnimation);
 
     // アコーディオン
     const accordion = document.querySelector('.principle__btn');

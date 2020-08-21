@@ -26,8 +26,11 @@
 - pタグのテキスト上下中央揃えは display: flex; aligin-items: center; で行うのがベスト。
 - span はinline要素なので、左右中央揃えにする場合は inline-block 要素に変換して width を設定し、text-align: center を指定する。
 
+### flex-flow について
+- flex-flow は flex-direction と flex-wrap を同時に指定することができるプロパティだが、レスポンシブデザイン対応で各デバイスでflex-direction と flex-wrap を個別に変更しなければならない場合は、最初から flex-direction と flex-wrap を指定するか、最初から flex-direction で指定する方法をとる。使用をどちらかに統一したほうがいい。
+
+### margin を設けずに中央揃えを行う
+- position プロパティを absolute か fixed にして、top, left, transform プロパティを使用して中央揃えを行う。
+
 ## TODO
-- ヘッダが一番前に来ていないので直す
-- menu-open時バックグラウンドがおかしいので直す
-- hero のレイアウトがデバイス毎にちょっと異なるので修正する
 - 

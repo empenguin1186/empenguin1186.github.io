@@ -120,32 +120,6 @@ img {
     }
 }
 
-.mobile-menu {
-
-    &__icon {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    &__btn {
-        position: relative;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        margin-bottom: 5px;
-    }
-
-    &__bar {
-        display: block;
-        height: 2px;
-        width: 35px;
-        background-color: $cBlack;
-        margin-bottom: 9px;
-    }
-}
-
 .contents-link {
     position: relative;
     display: flex;
@@ -358,7 +332,9 @@ img {
 
     &__li {
         margin-bottom: 32px;
-        @extend .flex;
+        // @extend .flex;
+        display: flex;
+        flex-direction: column;
 
         &:nth-child(1) {
             & .service__img {

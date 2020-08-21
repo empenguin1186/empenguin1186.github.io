@@ -4,13 +4,6 @@ Stylesheet: 960px以上のモニタで適用
 
 ******************************************************************/
 
-.mobile-menu {
-
-    &__li {
-        width: 50%;
-    }
-}
-
 .flex {
     display: flex;
     flex-direction: column;
@@ -21,6 +14,11 @@ Stylesheet: 960px以上のモニタで適用
 }
 
 .service {
+
+    &__title {
+        text-align: center;
+    }
+
     &__ul {
         flex-flow: row wrap;
         justify-content: space-between;
@@ -28,6 +26,9 @@ Stylesheet: 960px以上のモニタで適用
 
     &__li {
         flex-basis: 30%;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: flex-end;
     }
 
     &__img,

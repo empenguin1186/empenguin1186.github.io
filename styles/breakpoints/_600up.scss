@@ -32,7 +32,9 @@ Stylesheet: 600px以上のタブレットやモニタで適用
 
     &__li {
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
     &__img {
