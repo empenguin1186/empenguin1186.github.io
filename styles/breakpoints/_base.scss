@@ -226,18 +226,20 @@ img {
         left: 50%;
         transform: translateX(-50%);
         z-index: 1;
+        transform-style: preserve-3d;
+        perspective: 1000px;
     }
     
     &__triangle {
         width: 0;
         height: 0;
         border-right: 150px solid transparent;
-        border-bottom: 260px solid $cYellow;
+        border-bottom: 260px solid $cMain;
         border-left: 150px solid transparent;
         transform-origin: left bottom;
         opacity: 0;
-        transform: rotate(-30deg);
-        transition: all 0.3s ease;
+        transform: rotateZ(-15deg) rotateX(-85deg);
+        transition: all 1s ease-in;
     }
 
     &__circle {
@@ -247,9 +249,9 @@ img {
         width: 200px;
         height: 150px;
         opacity: 0;
-        transform: rotate(-30deg);
+        transform: rotateZ(20deg) rotateX(-85deg);
         transform-origin: right bottom;
-        transition: all 0.3s ease 0.4s;
+        transition: all 0.3s ease 0.5s;
      
         &::before {
             content: "";
@@ -339,7 +341,7 @@ img {
         &:nth-child(1) {
             & .service__img {
                 &::before {
-                    background-color: $cYellow;
+                    background-color: $cMain;
                     background-image: url(../../images/wordpress.svg);
                 }
             }
@@ -357,7 +359,7 @@ img {
         &:nth-child(3) {
             & .service__img {
                 &::before {
-                    background-color: #96d0d1;
+                    background-color: $cYellow;
                     background-image: url(../../images/mapmarker.svg);
                 }
             }
@@ -409,7 +411,7 @@ img {
         content:  "";
         top: 0;
         left: 0;
-        background-color: $cYellow;
+        background-color: $cMain;
         width: 100%;
         height: 100%;
         z-index: 0;
@@ -512,7 +514,7 @@ img {
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background-color: $cYellow;
+        background-color: $cMain;
         z-index: 0;
     }
 
@@ -550,7 +552,7 @@ img {
 
 .footer {
     position: relative;
-    background-color: $cYellow;
+    background-color: $cMain;
 
     & a {
         color: $cBlack !important;
@@ -607,17 +609,48 @@ img {
     }
 }
 
+.scroll {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    width: 50px;
+    height: 50px;
+    z-index: 200;
+
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        font-size: 50px;
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        border-radius: 50%;
+        text-align: center;
+        color: #484848;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #484848;
+            color: $cWhite;
+        }
+    }
+}
+
 .inview {
     
     & .hero {
         &__triangle {
             opacity: 1;
-            transform: rotate(-15deg);
+            // transform: rotate(-15deg);
+            transform: rotateZ(-15deg) rotateX(0);
         }
     
         &__circle {
             opacity: 1;
-            transform: rotate(20deg);
+            transform: rotateZ(20deg) rotateX(0);
         }
     }
 }

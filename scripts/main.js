@@ -31,6 +31,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const blog = new HeroSlider('.blog__slide');
     blog.start();
+
+    // ページトップへ戻る
+    $(function () {
+        const scroll = $('.scroll');
+        scroll.hide();
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                scroll.fadeIn();
+            } else {
+                scroll.fadeOut();
+            }
+        });
+        scroll.click(function () {
+            $('body, html').animate({ scrollTop: 0 }, 500);
+            return false;
+        });
+    })
 });
 
 class Main {

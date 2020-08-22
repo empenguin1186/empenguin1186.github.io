@@ -13,6 +13,13 @@ Stylesheet: 960px以上のモニタで適用
     width: 60%;
 }
 
+.principle {
+    &__wrapper {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
 .service {
 
     &__title {
