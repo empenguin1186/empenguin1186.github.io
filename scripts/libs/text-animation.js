@@ -16,7 +16,7 @@ class TextAnimation {
         this.chars = this.DOM.el.innerHTML.trim().split('');
         this.DOM.el.innerHTML = this._getText();
     }
-    
+
     /**
      * テキストの各文字に対して char クラスが付与された<span>タグを生成する。
      * 
@@ -68,7 +68,54 @@ class TweenTextAnimation extends TextAnimation {
             TweenMax.to(c, .6, {
                 ease: Back.easeOut,
                 delay: i * .05,
-                startAt: {y: '-50%', opacity: 0},
+                startAt: { y: '-50%', opacity: 0 },
+                y: '0%',
+                opacity: 1
+            })
+        });
+    }
+}
+
+
+class MultiTextAnimation {
+    /**
+     * @constructor
+     * @param {HTMLElement|string} アニメーションを付与する要素
+     */
+    constructor(el) {
+        this.DOM = {};
+        this.elsMap = new Map();
+        this._initMap(el);
+    }
+
+    _initMap(el) {
+        const els = el instanceof HTMLElement ? el : document.querySelectorAll(el);
+        els.forEach(el => {
+            const chars = el.innerHTML.trim().split('');
+            el.innerHTML = chars.reduce((acc, curr) => {
+                curr = curr.replace(/\s+/, '&nbsp;');
+                return acc += `<span class="char">${curr}</span>`;
+            }, "");
+            this.elsMap.set(el, chars);
+        })
+    }
+
+    /**
+     * 指定した要素にアニメーションを付与する。文字数関係なく delay を動的に設定できる。
+     * 
+     * @method animate
+     */
+    animate() {
+        this.elsMap.forEach(this._innerAnimate);
+    }
+
+    _innerAnimate(value, key, map) {
+        key.classList.toggle('inview');
+        value.forEach((c, i) => {
+            TweenMax.to(c, .6, {
+                ease: Back.easeOut,
+                delay: i * .05,
+                startAt: { y: '-50%', opacity: 0 },
                 y: '0%',
                 opacity: 1
             })

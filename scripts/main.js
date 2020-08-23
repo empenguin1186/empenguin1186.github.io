@@ -1,62 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // const main = new Main();
-    const menu = new MobileMenu();
-
-    function inviewAnimation(el, inview) {
-        if (inview) {
-            el.classList.add('inview');
-        } else {
-            el.classList.remove('inview');
-        }
-    }
-
-    const so = new ScrollObserver('.hero', inviewAnimation);
-    const soPrinciple = new ScrollObserver('.principle', inviewAnimation);
-    const soService = new ScrollObserver('.service', inviewAnimation);
-    const soWorks = new ScrollObserver('.works', inviewAnimation);
-    const soBlog = new ScrollObserver('.blog', inviewAnimation);
-    const soAbout = new ScrollObserver('.about', inviewAnimation);
-    const soContact = new ScrollObserver('.contact', inviewAnimation);
-    const soFooter = new ScrollObserver('.footer', inviewAnimation);
-
-    // アコーディオン
-    const accordion = document.querySelector('.principle__btn');
-    const clickOrTap = window.ontouchstart ? 'touchstart' : 'click';
-    accordion.addEventListener(clickOrTap, () => {
-        document.querySelector('.principle').classList.toggle('expand');
-    });
-
-    const works = new HeroSlider('.works__slide');
-    works.start();
-
-    const blog = new HeroSlider('.blog__slide');
-    blog.start();
-
-    // ページトップへ戻る
-    $(function () {
-        const scroll = $('.scroll');
-        scroll.hide();
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 100) {
-                scroll.fadeIn();
-            } else {
-                scroll.fadeOut();
-            }
-        });
-        scroll.click(function () {
-            $('body, html').animate({ scrollTop: 0 }, 500);
-            return false;
-        });
-    })
+    const main = new Main();
 });
 
 class Main {
     constructor() {
-        this.header = document.querySelector('.header');
-        this.sides = document.querySelectorAll('.side');
         this.mobileMenu = new MobileMenu();
-        this.hero = new HeroSlider('.swiper-container');
         this._observers = [];
+        this._swipers = [];
         Pace.on('done', this._init.bind(this));
     }
 
@@ -68,8 +18,19 @@ class Main {
         return this._observers;
     }
 
+    set swipers(val) {
+        this._swipers.push(val);
+    }
+
+    get swipers() {
+        return this._swipers;
+    }
+
     _init() {
         this._scrollInit();
+        this._swiperInit();
+        this._accordionInit();
+        this._moveTopInit();
     }
 
     _toggleAnimation(el, inview) {
@@ -103,21 +64,57 @@ class Main {
         }
     }
 
-    _sideAnimation(el, inview) {
-        if (inview) {
-            this.sides.forEach(side => side.classList.add('inview'));
-        } else {
-            this.sides.forEach(side => side.classList.remove('inview'));
-        }
+    // スクロール監視クラスの初期化
+    _scrollInit() {
+        this.observers = new ScrollObserver('.hero', this._inviewAnimation);
+        this.observers = new ScrollObserver('.principle', this._inviewAnimation);
+        this.observers = new ScrollObserver('.service', this._inviewAnimation);
+        this.observers = new ScrollObserver('.works', this._inviewAnimation);
+        this.observers = new ScrollObserver('.blog', this._inviewAnimation);
+        this.observers = new ScrollObserver('.about', this._inviewAnimation);
+        this.observers = new ScrollObserver('.contact', this._inviewAnimation);
+        this.observers = new ScrollObserver('.footer', this._inviewAnimation);
+        // this.observers = new ScrollObserver('.hero__desc', this._textAnimation);
     }
 
-    _scrollInit() {
-        this.observers = new ScrollObserver('.swiper-container', this._toggleAnimation.bind(this), { once: false });
-        this.observers = new ScrollObserver('.tween-animate-title', this._textAnimation);
-        this.observers = new ScrollObserver('.cover-slide', this._inviewAnimation);
-        this.observers = new ScrollObserver('.travel__title', this._inviewAnimation);
-        this.observers = new ScrollObserver('.nav-trigger', this._navAnimation.bind(this), { once: false });
-        this.observers = new ScrollObserver('.appear', this._inviewAnimation);
-        this.observers = new ScrollObserver('#main-content', this._sideAnimation.bind(this), { once: false, rootMargin: "-400px 0px" });
+    // スライドの初期化
+    _swiperInit() {
+        this._setSwipersAll();
+        this._swipers.forEach(el => {
+            el.start();
+        });
+    }
+
+    _setSwipersAll() {
+        this.swipers = new HeroSlider('.works__slide');
+        this.swipers = new HeroSlider('.blog__slide');
+    }
+
+    // アコーディオンの初期化
+    _accordionInit() {
+        const accordion = document.querySelector('.principle__btn');
+        const clickOrTap = window.ontouchstart ? 'touchstart' : 'click';
+        accordion.addEventListener(clickOrTap, () => {
+            document.querySelector('.principle').classList.toggle('expand');
+        });
+    }
+
+    // クリックするとページトップに遷移するボタンの初期化
+    _moveTopInit() {
+        $(function () {
+            const scroll = $('.scroll');
+            scroll.hide();
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    scroll.fadeIn();
+                } else {
+                    scroll.fadeOut();
+                }
+            });
+            scroll.click(function () {
+                $('body, html').animate({ scrollTop: 0 }, 500);
+                return false;
+            });
+        })
     }
 }
