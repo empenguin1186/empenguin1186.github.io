@@ -323,7 +323,7 @@
 
 .bg-img-zoom {
   width: 100%;
-  background-image: url(images/image-1.jpg);
+  background-image: url(../../images/top-image.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -336,7 +336,7 @@
 .img-bg50::before {
   display: block;
   content: '';
-  padding-top: 50%;
+  padding-top: 70%;
 }
 
 .bgColorWhite, .btn.float, .btn.filled:hover, .btn.letter-spacing, .btn.shadow, .btn.solid, .btn.rotate, .btn.bg-slide {
@@ -848,7 +848,7 @@ img {
   padding-bottom: 80px !important;
 }
 
-.content-width, .header__inner, .hero, .principle, .service, .works__inner, .blog, .about__inner, .contact, .footer__inner {
+.content-width, .header__inner, .hero__texts, .principle, .service, .works__inner, .blog, .about__inner, .contact, .footer__inner {
   width: 80%;
   margin: 0 auto;
   max-width: 1070px;
@@ -977,25 +977,16 @@ img {
 
 .hero {
   position: relative;
-  padding-top: 100px;
-}
-
-.hero__icon {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 24px;
-  margin: 40px auto;
+  padding-top: 75px;
 }
 
 .hero__texts {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 400px;
 }
 
 .hero__title {
@@ -1004,6 +995,7 @@ img {
   -webkit-transform: rotate(-10deg);
           transform: rotate(-10deg);
   margin: 30px 0px;
+  color: #eaebe6;
 }
 
 .hero__title > span {
@@ -1014,13 +1006,15 @@ img {
 
 .hero__horizontal {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .hero__vertical {
   position: absolute;
-  top: 0;
+  top: 60%;
   right: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1029,6 +1023,9 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  color: #eaebe6;
 }
 
 .hero__jpn {
@@ -1037,7 +1034,7 @@ img {
           writing-mode: vertical-rl;
   text-orientation: upright;
   padding-right: 5px;
-  border-right: 1px black solid;
+  border-right: 1px #eaebe6 solid;
 }
 
 .hero__domain {
@@ -1049,9 +1046,10 @@ img {
 
 .hero__desc {
   position: absolute;
-  bottom: 0;
+  bottom: 10%;
   left: 0;
   font-size: 12px;
+  color: #eaebe6;
 }
 
 .hero__bg {
@@ -1559,7 +1557,7 @@ Stylesheet: 960px以上のモニタで適用
             flex-direction: column;
   }
   .hero {
-    width: 60%;
+    width: 100%;
   }
   .principle__wrapper {
     width: 80%;

@@ -116,25 +116,18 @@
 
 .bg-img-zoom {
     width: 100%;
-    // div タグはデフォルトでは高さを持たないので、ピクセル単位で指定
-    // height: 200px;
-    background-image: url(images/image-1.jpg);
+    background-image: url(../../images/top-image.jpg);
     background-position: center;
-    // https://developer.mozilla.org/ja/docs/Web/CSS/background-size
-    // background-size: cover は、アスペクト比を崩さずに、大きさが最大になるように表示する。
     background-size: cover;
     background-repeat: no-repeat;
-
-    // 他のクラスのプロパティを使用したいときには、@extend を使用する
     @extend .img-zoom;
 }
 
-// background-img はアスペクト比が保たれない欠点があるが、以下のプロパティを設定するとアスペクト比を保つことができる。
 .img-bg50 {
     position: relative;
     &::before {
         display: block;
         content: '';
-        padding-top: 50%;
+        padding-top: 70%;
     }
 }
