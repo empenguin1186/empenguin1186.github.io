@@ -38,9 +38,24 @@
 }
 
 .swiper-button {
-    &-prev,
     &-next {
         color: $cWhite;
+        @include animation(
+            $name: swiper-button-animation-next,
+            $duration: 3s,
+            $timing-function: ease-in-out,
+            $iteration-count: infinite,
+        );
+    }
+
+    &-prev {
+        color: $cWhite;
+        @include animation(
+            $name: swiper-button-animation-prev,
+            $duration: 3s,
+            $timing-function: ease-in-out,
+            $iteration-count: infinite,
+        );
     }
 }
 
@@ -48,4 +63,24 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
+}
+
+@keyframes swiper-button-animation-prev {
+    0%,50% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+}
+
+@keyframes swiper-button-animation-next {
+    0%,50% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(10px);
+    }
 }

@@ -32,5 +32,8 @@
 ### margin を設けずに中央揃えを行う
 - position プロパティを absolute か fixed にして、top, left, transform プロパティを使用して中央揃えを行う。
 
+### インライン要素は transform プロパティが有効とならない
+- span タグなどのインライン要素は transform プロパティが有効とならないので、アニメーションを設定したい場合は display プロパティを inline-block とする。
+
 ## TODO
 - 

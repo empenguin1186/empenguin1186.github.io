@@ -49,6 +49,15 @@ class Main {
         }
     }
 
+    _headerBgChange(el, inview) {
+        const header = document.querySelector('.header');
+        if (inview) {
+            header.classList.remove('top');
+        } else {
+            header.classList.add('top');
+        }
+    }
+
     _navAnimation(el, inview) {
         if (inview) {
             this.header.classList.remove('triggered');
@@ -67,6 +76,7 @@ class Main {
     // スクロール監視クラスの初期化
     _scrollInit() {
         this.observers = new ScrollObserver('.hero', this._inviewAnimation);
+        this.observers = new ScrollObserver('.bg-gray', this._headerBgChange, { once: false });
         this.observers = new ScrollObserver('.principle', this._inviewAnimation);
         this.observers = new ScrollObserver('.service', this._inviewAnimation);
         this.observers = new ScrollObserver('.works', this._inviewAnimation);
@@ -74,7 +84,8 @@ class Main {
         this.observers = new ScrollObserver('.about', this._inviewAnimation);
         this.observers = new ScrollObserver('.contact', this._inviewAnimation);
         this.observers = new ScrollObserver('.footer', this._inviewAnimation);
-        // this.observers = new ScrollObserver('.hero__desc', this._textAnimation);
+        this.observers = new ScrollObserver('.title__main', this._textAnimation);
+        this.observers = new ScrollObserver('.title__sub', this._textAnimation);
     }
 
     // スライドの初期化

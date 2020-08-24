@@ -39,8 +39,40 @@
           transform: none;
 }
 
-.swiper-button-prev, .swiper-button-next {
+.swiper-button-next {
   color: white;
+  -webkit-animation-name: swiper-button-animation-next;
+          animation-name: swiper-button-animation-next;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.swiper-button-prev {
+  color: white;
+  -webkit-animation-name: swiper-button-animation-prev;
+          animation-name: swiper-button-animation-prev;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .swiper-pagination {
@@ -51,6 +83,50 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@-webkit-keyframes swiper-button-animation-prev {
+  0%, 50% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  25% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+}
+
+@keyframes swiper-button-animation-prev {
+  0%, 50% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  25% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+  }
+}
+
+@-webkit-keyframes swiper-button-animation-next {
+  0%, 50% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  25% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
+}
+
+@keyframes swiper-button-animation-next {
+  0%, 50% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  25% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+  }
 }
 
 .tween-animate-title.inview .char {
@@ -811,10 +887,10 @@ img {
 
 .bg-gray {
   position: absolute;
-  top: -100px;
+  top: 0px;
   left: 0;
   width: 100%;
-  height: 100px;
+  height: 75px;
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
   -webkit-transform-origin: bottom left;
@@ -829,8 +905,8 @@ img {
   width: 100%;
   padding: 20px 0;
   z-index: 200;
-  height: 100px;
-  background-color: white;
+  height: 75px;
+  background-color: transparent;
 }
 
 .header__inner {
@@ -849,6 +925,10 @@ img {
 
 .header__link > span {
   display: block;
+}
+
+.header.top {
+  background-color: white;
 }
 
 .contents-link {
@@ -976,15 +1056,52 @@ img {
 
 .hero__bg {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  z-index: 1;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero__bg > .hero__circle:nth-child(1) {
+  top: 10%;
+  right: 10%;
+  width: 150px;
+  height: 150px;
+  background-color: #ffc107;
+  -webkit-transition-delay: 1s;
+          transition-delay: 1s;
+}
+
+.hero__bg > .hero__circle:nth-child(2) {
+  top: 50%;
+  left: 30%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background-color: #ffee6b;
+  -webkit-transition-delay: 0.5s;
+          transition-delay: 0.5s;
+}
+
+.hero__bg > .hero__circle:nth-child(3) {
+  bottom: 20%;
+  right: 30%;
+  width: 50px;
+  height: 50px;
+  background-color: #96d0d1;
+}
+
+.hero__circle {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .hero__triangle {
@@ -1000,32 +1117,6 @@ img {
           transform: rotateZ(-15deg) rotateX(-85deg);
   -webkit-transition: all 1s ease-in;
   transition: all 1s ease-in;
-}
-
-.hero__circle {
-  position: absolute;
-  top: 30%;
-  right: 0;
-  width: 200px;
-  height: 150px;
-  opacity: 0;
-  -webkit-transform: rotateZ(20deg) rotateX(-85deg);
-          transform: rotateZ(20deg) rotateX(-85deg);
-  -webkit-transform-origin: right bottom;
-          transform-origin: right bottom;
-  -webkit-transition: all 0.3s ease 0.5s;
-  transition: all 0.3s ease 0.5s;
-}
-
-.hero__circle::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 1px dashed black;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
 }
 
 .principle__wrapper {
@@ -1388,8 +1479,12 @@ img {
 
 .inview .hero__circle {
   opacity: 1;
-  -webkit-transform: rotateZ(20deg) rotateX(0);
-          transform: rotateZ(20deg) rotateX(0);
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.char {
+  display: inline-block;
 }
 
 @media (min-width: 480px) {
