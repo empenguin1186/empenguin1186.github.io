@@ -114,20 +114,19 @@
     }
 }
 
-.bg-img-zoom {
+.bg-img {
     width: 100%;
     background-image: url(../../images/top-image.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    @extend .img-zoom;
 }
 
-.img-bg50 {
+.img-bg60 {
     position: relative;
     &::before {
         display: block;
         content: '';
-        padding-top: 70%;
+        padding-top: 60%;
     }
 }

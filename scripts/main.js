@@ -52,9 +52,9 @@ class Main {
     _headerBgChange(el, inview) {
         const header = document.querySelector('.header');
         if (inview) {
-            header.classList.remove('top');
-        } else {
             header.classList.add('top');
+        } else {
+            header.classList.remove('top');
         }
     }
 
@@ -75,8 +75,10 @@ class Main {
 
     // スクロール監視クラスの初期化
     _scrollInit() {
-        this.observers = new ScrollObserver('.hero', this._inviewAnimation);
-        this.observers = new ScrollObserver('.bg-gray', this._headerBgChange, { once: false });
+        this.observers = new ScrollObserver('.hero__texts', this._inviewAnimation);
+        this.observers = new ScrollObserver('.hero__title', this._inviewAnimation);
+        this.observers = new ScrollObserver('.hero__vertical', this._inviewAnimation);
+        // this.observers = new ScrollObserver('.principle', this._headerBgChange, { once: false });
         this.observers = new ScrollObserver('.principle', this._inviewAnimation);
         this.observers = new ScrollObserver('.service', this._inviewAnimation);
         this.observers = new ScrollObserver('.works', this._inviewAnimation);

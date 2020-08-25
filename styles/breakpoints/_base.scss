@@ -101,7 +101,8 @@ img {
     padding: 20px 0;
     z-index: 200;
     height: 75px;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: $cBlack;
     
     &__inner {
         display: flex;
@@ -119,9 +120,9 @@ img {
         }
     }
     
-    &.top {
-        background-color: $cWhite;
-    }
+    // &.top {
+    //     color: $cBgGray;
+    // }
 }
 
 .contents-link {
@@ -444,6 +445,18 @@ img {
 
     & .swiper-container {
         @extend .mb-sm;
+    }
+
+    &__comming {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(20deg);
+        color: $cBgGray;
+        border: 1px solid white;
+        padding: 10px;
+        border-radius: 5%;
+        font-weight: 600;
     }
 }
 
